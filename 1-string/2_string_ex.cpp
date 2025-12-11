@@ -9,7 +9,10 @@ using namespace std;
 */
 void lunghezzaStringa(string stringa){
 
-    cout << "Da implementare" << endl;
+    int x = stringa.length();
+    int y = stringa.size();
+    cout << "length: " << x << endl;
+    cout << "size: " << y << endl;
 
 }
 
@@ -21,8 +24,13 @@ void lunghezzaStringa(string stringa){
 */
 void trovaCiao(string stringa){
 
-    cout << "Da implementare" << endl;
-    
+   int x = stringa.find("ciao");
+   if(x==-1){
+    cout << "La parola ciao NON e' presente" << endl;
+   }else
+   cout << "La parola ciao e' presente" << endl;
+
+
 }
 
 
@@ -31,9 +39,20 @@ void trovaCiao(string stringa){
     TODO: sostituire la parola "pizza" con la parola "pasta" e stampare la nuova stringa
 */
 void sostituisciPizzaConPasta(string stringa){
-    
-    cout << "Da implementare" << endl;
-    
+
+    int x = stringa.find("pizza");
+   if(x==-1){
+    cout << "La parola pizza NON e' presente" << endl;
+    cout << "la stringa e': " << stringa << endl;
+   }else{
+  stringa.replace(stringa.find("pizza"), 5, "pasta");
+  cout << "La parola pizza e' presente" << endl;
+    cout << "la stringa cambiata e': " << stringa << endl;
+    }
+
+
+
+
 }
 
 
@@ -45,9 +64,8 @@ void sostituisciPizzaConPasta(string stringa){
 */
 void stampaPrimaParola(string stringa){
     // TODO
-
-    cout << "Da implementare" << endl;
-    
+    string s= stringa.substr(0, stringa.find(" "));
+    cout << "La prima parola e': " << s << endl;
 }
 
 
@@ -57,8 +75,9 @@ void stampaPrimaParola(string stringa){
 */
 void aggiungiGiovanni(string frase){
 
-    cout << "Da implementare" << endl;
-    
+    frase.insert(frase.size(), " Giovanni!");
+    cout << "frase con giovanni: " << frase << endl;
+
 }
 
 int main()
@@ -71,11 +90,11 @@ int main()
 
 
     lunghezzaStringa(str);
-    //trovaCiao(str);
-    //sostituisciPizzaConPasta(str);
-    //stampaPrimaParola(str);
-    //aggiungiGiovanni(str);
-    
+    trovaCiao(str);
+    sostituisciPizzaConPasta(str);
+    stampaPrimaParola(str);
+    aggiungiGiovanni(str);
+
 
 
     return 0;
