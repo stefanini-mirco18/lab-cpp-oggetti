@@ -3,6 +3,8 @@
 
 using namespace std;
 
+void funz(){
+}
 
 int main()
 {
