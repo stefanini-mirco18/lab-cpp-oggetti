@@ -3,6 +3,9 @@
 #include <cctype>   // per toupper
 using namespace std;
 
+
+
+
  // numero di email
 const int N = 12;
 
@@ -21,18 +24,31 @@ string emails[N] = {
     "gianluca.marini@studio.alberghetti.it",
     "marta.leone@studio.alberghetti.it"
     };
+string rimuovi(string s){
+int x= s.find(".");
+s.erase(x,1);
+return s;
+}
 
+string rimuoviC(string s){
+int x= s.find("@");
+s.erase(x, s.length());
+return s;
+}
 
-/*
-    TODO: la seguente funzione prende in input una string s minuscola e modifica il primo carattere rendendolo maiuscolo.
-    Esempio: "marco" -> "Marco", "rossi" -> "Rossi"
-
-    Hint: usare la funzione toupper(), vedi funzione minuscolo() in esercizio 3_userGenerator.cpp
-
-*/
-string primoCarattereMaiuscolo(string &s) {
+string spezza(string s){
+int x= s.find(".");
+string nome=s.substr(0, x);
+string cognome= s.substr(x+1, s.length());
+string nomeCognome= nome + " " + cognome;
+return nomeCognome;
 
 }
+string primoCarattereMaiuscolo(string &s) {
+     s.at(0) = toupper(s.at(0));
+return s;
+}
+
 
 int main() {
 
@@ -44,15 +60,15 @@ int main() {
     // ciclo su tutte le email
     for (int i = 0; i < N; i++) {
         string email = emails[i]; //email corrente
-
-        //TODO: rimuovere la parte dopo la chiocciola
+        email=rimuoviC(email);
+        email=rimuovi(email);
+        nomiCognomi[i]=spezza(email);
 
         // TODO: spezzare la stringa in due parti diverse: nome e cognome (utilizzare il punto come criterio per separare)
 
-        // TODO: rendere maiuscolo il primo carattere di nome e cognome (usare la funzione primoCarattereMaiuscolo)
 
         // TODO: inserire in nomiCognomi[i] l'insieme delle due stringhe (concatenarle con l'operatore +)
-        
+
     }
 
     // stampa il risultato
