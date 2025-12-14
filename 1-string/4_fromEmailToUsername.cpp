@@ -3,10 +3,7 @@
 #include <cctype>   // per toupper
 using namespace std;
 
-
-
-
- // numero di email
+// numero di email
 const int N = 12;
 
 // array di email
@@ -23,52 +20,40 @@ string emails[N] = {
     "elena.sartori@studio.alberghetti.it",
     "gianluca.marini@studio.alberghetti.it",
     "marta.leone@studio.alberghetti.it"
-    };
-string rimuovi(string s){
-int x= s.find(".");
-s.erase(x,1);
-return s;
+};
+
+// Funzione per ottenere il nome e cognome dalla stringa
+string spezza(string s) {
+    int x = s.find(".");
+    string nome = s.substr(0, x);       
+    string cognome = s.substr(x + 1, s.find("@") - x - 1); 
+   
+    string nomeCognome = nome + " " + cognome;
+    return nomeCognome;
 }
 
-string rimuoviC(string s){
-int x= s.find("@");
-s.erase(x, s.length());
-return s;
-}
-
-string spezza(string s){
-int x= s.find(".");
-string nome=s.substr(0, x);
-string cognome= s.substr(x+1, s.length());
-string nomeCognome= nome + " " + cognome;
-return nomeCognome;
-
-}
+// Funzione per rendere il primo carattere maiuscolo
 string primoCarattereMaiuscolo(string &s) {
-     s.at(0) = toupper(s.at(0));
-return s;
+    s.at(0) = toupper(s.at(0));
+    int x = s.find(" ");
+    s.at(x+1)= toupper(s.at(x+1));
+    return s;
 }
-
 
 int main() {
-
     // array destinazione per "Nome Cognome"
     string nomiCognomi[N];
 
-
-
     // ciclo su tutte le email
     for (int i = 0; i < N; i++) {
-        string email = emails[i]; //email corrente
-        email=rimuoviC(email);
-        email=rimuovi(email);
-        nomiCognomi[i]=spezza(email);
-
-        // TODO: spezzare la stringa in due parti diverse: nome e cognome (utilizzare il punto come criterio per separare)
-
-
-        // TODO: inserire in nomiCognomi[i] l'insieme delle due stringhe (concatenarle con l'operatore +)
-
+        string email = emails[i]; 
+        email = email.substr(0, email.find("@")); 
+        
+       
+        nomiCognomi[i] = spezza(email);
+        
+        
+        nomiCognomi[i] = primoCarattereMaiuscolo(nomiCognomi[i]);
     }
 
     // stampa il risultato
