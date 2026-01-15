@@ -38,11 +38,26 @@ public:
     void stampaStudente(){
         cout << "Nome: " << nome << ", eta: " << eta << ", media: " << media << endl;
     }
+    
+    int getEta(){
+        return eta;
+    }
+    string getNome(){
+        return nome;
+    }
+    float getMedia(){
+        return media;
+    }
 };
 
 int main()
 {
     // TODO Istanziare un nuovo oggetto e valorizzarlo attraverso i nuovi metodi set
+    Studente s1;
+    s1.setNome("Luigi");
+    s1.setEta(16);
+    s1.setMedia(5);
+    
 
     // TODO Adesso che gli attributi della classe sono privati, com'è possibile accedervi? 
     //      Risolvere il problema creando nuove funzioni "get" che permettano l'accesso a tutti gli attributi della classe
